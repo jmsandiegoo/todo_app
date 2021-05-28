@@ -12,24 +12,29 @@ export default function TodoList({
 }) {
   return (
     <ScrollView>
-      {() => {
-        if (todos.length > 0) {
+      {(() => {
+        console.log(todos);
+        if (todos.length == 0) {
+          console.log(todos);
           return (
-            <Text>
+            <Text style={{ color: 'red' }}>
               Congratulations! You have finished all the task for today.
             </Text>
           );
         } else {
           return todos.map((item) => {
+            return (            
             <TodoItem
               item={item}
               key={item.key.toString()}
               finishTask={finishTask}
               deleteTask={deleteTask}
-            />;
+            />);
+
           });
         }
-      }}
+      })()}
+
       {todosCompleted.map((item) => {
         return (
           <TodoItemCompleted
